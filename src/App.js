@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Container from "./Components/Container/Container";
+import {AuthContextProvider} from "./context/AuthContext";
+import {Route, Routes} from "react-router-dom";
+import Login from "./Components/Login/Login";
+import Protected from "./Hok/Protected";
+import Chat from "./Components/Chat/Chat";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+
+        <AuthContextProvider>
+            <Routes>
+                <Route path={'signIn'} element={<Login/>}/>
+                <Route path={'/'} element={<Protected><Container/></Protected>}>
+                    <Route path={':name'} element={<Chat/>}/>
+                </Route>
+
+            </Routes>
+        </AuthContextProvider>
+    )
+        ;
+};
 
 export default App;

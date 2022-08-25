@@ -1,0 +1,12 @@
+.container{
+    border: 1px solid black;
+    width: 70vw;
+    height: 80vh;
+    margin: 10vh auto ;
+    display: flex;
+}
+
+
+
+
+
