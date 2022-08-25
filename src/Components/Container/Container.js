@@ -7,7 +7,7 @@ import Users from "../Users/Users";
 const Container = () => {
 
     return (
-        <div className={'container'}>
+        <div className={'container flex'}>
             <Users/>
             <Outlet/>
         </div>

@@ -21,8 +21,9 @@ const Login = () => {
     }
 
     return (
-        <div className={'login'}>
+        <div className={'login flex'}>
             <h2>Sign In</h2>
+            <h6>Please,login with your Google account</h6>
             <div>
                 <GoogleButton onClick={handleGoogleSignIn}/>
             </div>

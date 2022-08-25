@@ -59,49 +59,19 @@ input[type="search"] {
     margin-bottom: 30px;
 }
 
-.user {
-    border-bottom: 1px solid rgb(243,243,243);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 100%;
-}
+@media screen and (max-width: 768px) {
 
-.userLogo{
-    width: 35px;
-    height: 35px;
-    border: 1px solid silver;
-    box-sizing: border-box;
-    border-radius: 50%;
-    position: relative;
-}
+    .header_logo {
+        width: 30px;
+        height: 30px;
+    }
+    .check{
+        top: 20px;
+        left: 20px;
+    }
+    .users h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
 
-.userMain {
-    display: flex;
-    width: 70%;
 }
-
-.userMessage {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    row-gap: 5px;
-    width: 80%;
-    height: 40px;
-    overflow: hidden;
-    text-overflow: clip;
-}
-
-.userDate{
-    width: 30%;
-    display: flex;
-    justify-content: end;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-

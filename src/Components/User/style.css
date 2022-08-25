@@ -1,0 +1,49 @@
+.user {
+    border-bottom: 1px solid rgb(243,243,243);
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+}
+
+
+.user_main {
+    width: 70%;
+}
+
+.user_message {
+    margin-left: 20px;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 5px;
+    width: 80%;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.user_date{
+    width: 30%;
+    justify-content: end;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .user {
+        height: 60px;
+    }
+    .user_message{
+        margin-left: 12px;
+        font-size: 15px;
+        width: 90%;
+    }
+    .user_date {
+        font-size: 13px;
+    }
+}
+
+

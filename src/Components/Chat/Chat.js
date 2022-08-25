@@ -29,13 +29,12 @@ const Chat = () => {
                 id: doc.id,
                 data: doc.data(),
             }))
-            const filterMessage = message.filter(message => message.data.userId === +id);
-            const sorted = filterMessage.sort((a, b) => a.data.time - b.data.time)
-            setMessages(sorted);
+            const filterMessages = message.filter(message => message.data.userId === +id);
+            const sortedMessages = filterMessages.sort((a, b) => a.data.time - b.data.time)
+            setMessages(sortedMessages);
             dispatch(getMessagesFromDb({message}))
         })
     }
-
 
     const createMessage = (data) => {
 
@@ -73,13 +72,12 @@ const Chat = () => {
         getMessages()
     }, [id])
 
-
     return (
-        <div className={'chat_wrap'}>
+        <div className={'chat_wrap flex'}>
 
-            <div className={'chat_header'}>
+            <div className={'chat_header flex'}>
 
-                <div className={'userLogo'}>
+                <div className={'header_logo'}>
                     <img src={data.avatar} alt="logo" className={'logo'}/>
                     <img src={check} alt="check" className={'check'}/>
                 </div>
@@ -88,20 +86,43 @@ const Chat = () => {
             </div>
 
             <div className={'chat_medium'}>
-                {messages && messages.map(message => <div key={message.id} className={'medium'}>
-                    <div style={{display:'flex', columnGap:"10px"}}>
-                        <div className={'userLogo'} style={{display:message.data.answer ? "flex" : "none"}}>
-                            <img src={data.avatar} alt="logo" className={'logo'}/>
-                        </div>
-                        <p className={'medium_text'}
-                           style={{background: message.data.answer ? "rgb(136,141,165)" : "none"}}>{message.data.answer}</p>
-                    </div>
-                    <div className={'medium_text'}
-                         style={{background: message.data.text ? "rgb(224,224,224)" : "none"}}>
-                        {message.data.text}
-                    </div>
-                </div>)}
 
+
+                {messages && messages.map(message =>
+                    <div key={message.id}>
+                        {message.data.text ?
+
+                            <div className={'medium_text flex'}>
+                                <div  style={{background:"rgb(224,224,224)"}} className={'text'}>
+                                    {message.data.text}
+                                </div>
+                                <p>
+                                    {new Date(message.data.time ).toLocaleString().replaceAll('.','/').slice(0,-3)}
+                                </p>
+                            </div>
+
+                            :
+                            <div className={'medium_answer flex'}>
+
+                                <div className={'header_logo'}>
+                                    <img src={data.avatar} alt="logo" className={'logo'}/>
+                                </div>
+
+                                <div style={{maxWidth:'70%'}}>
+
+                                    <div className={'text'} style={{background:"rgb(59,63,82)",color:"white"}}>
+                                        {message.data.answer}
+                                    </div>
+
+                                    <p>
+                                        {new Date(message.data.time ).toLocaleString().replaceAll('.','/').slice(0,-3)}
+                                    </p>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                )}
             </div>
 
             <div className={'chat_bottom'}>
